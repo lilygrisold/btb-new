@@ -132,7 +132,7 @@ const NavSearch = ({ mapRef, mapboxgl,createOriginOrDestinationMarker, addTransi
   
   // Function to get public transit route for use in Map
   const fetchPublictTransitDirections = () => {
-    fetch(`https://transit.router.hereapi.com/v8/routes?origin=${origin[1]},${origin[0]}&destination=${destination[1]},${destination[0]}&apiKey=${process.env.HERE_API_KEY}`)
+    fetch(`https://transit.router.hereapi.com/v8/routes?origin=${origin[1]},${origin[0]}&destination=${destination[1]},${destination[0]}&apiKey=${process.env.REACT_APP_HERE_API_KEY}`)
       .then(res => res.json())
       .then(data => {
         if (!data.routes || data.routes.length === 0) {

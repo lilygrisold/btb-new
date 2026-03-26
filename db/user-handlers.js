@@ -2,7 +2,7 @@
 
 // Require MongoDB and dotenv
 const { MongoClient } = require("mongodb");
-require("dotenv").config();
+require("dotenv").config({path: '/home/maara/websites/btb/btb-new/.env'});
 const {sendResponse} = require('./utils')
 
 // Mongo constants

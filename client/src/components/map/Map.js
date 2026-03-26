@@ -20,7 +20,7 @@ import { UserContext } from "../UserContext";
 
 
 // Bring in mapbox token from .env files
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const Map = () => {
     // *****************************************************

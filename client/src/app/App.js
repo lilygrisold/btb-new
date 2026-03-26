@@ -19,7 +19,7 @@ import ScrollToTop from "./ScrollToTop";
 // required by mabox
 import mapboxgl from 'mapbox-gl';
 // import mapboxgl from 'mapbox-gl/dist/mapbox-gl.css';
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 const App = () => {
   return (
 <>
