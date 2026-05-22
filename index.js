@@ -32,8 +32,8 @@ console.log("Importing handler modules...");
 ///////////
 // Handlers
 ///////////
-const { getGBFS, getStationStatus } =require(  "./db/gbfs-handlers.js");
-const { requestPositionFromAddress, googleAutocomplete, getGeoJSON} =require(  "./db/location-handlers.js");
+const { getGBFS, getStationStatus } =require(  "./db/gbfs-handlers");
+const { requestPositionFromAddress, googleAutocomplete, getGeoJSON} =require(  "./db/location-handlers");
 const { handleLogIn, 
         handleSignUp, 
         updateUserProfile, 
