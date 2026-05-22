@@ -67,8 +67,11 @@ const googleAutocomplete = async (req, res) => {
       }
   
       const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(input)}&key=${GOOGLE_API_KEY}`;
-      const response = await fetch(url);
-  
+      const response = await fetch(url, {
+        headers: {
+            'Referer': req.headers.origin || 'https://btbapp.ca'
+        }
+      });
       const data = await response.json();
   
       if (data.status !== 'OK') {

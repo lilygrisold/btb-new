@@ -6,7 +6,7 @@ import 'mapbox-gl';
 // Required by Mapbox
 // import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import mapboxgl from 'mapbox-gl';
-// import mapboxgl from 'mapbox-gl/dist/mapbox-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
