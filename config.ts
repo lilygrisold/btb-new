@@ -12,7 +12,7 @@ const config: Config = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   MONGODB_URI: process.env.MONGODB_URI || process.env.REACT_APP_MONGO_URI || '',
   JWT_SECRET: process.env.JWT_SECRET || 'default-secret-change-in-production',
-  REACT_APP_API_URL: process.env.REACT_APP_API_URL || 'http://localhost:5001',
+  REACT_APP_API_URL: process.env.REACT_APP_API_URL || 'http://localhost:5002',
   REACT_APP_MAPBOX_TOKEN: process.env.REACT_APP_MAPBOX_TOKEN || '',
 };
 

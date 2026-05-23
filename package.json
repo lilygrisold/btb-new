@@ -46,12 +46,13 @@
     "why": "^0.6.2"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "ts-node index.ts",
     "dev": "nodemon index.js",
     "build": "webpack --mode=production",
     "build:ts": "tsc",
     "type-check": "tsc --noEmit",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "start:prod": "node dist/index.js"
   },
   "engines": {
     "node": "20.X",

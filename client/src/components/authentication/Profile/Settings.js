@@ -25,7 +25,7 @@ const Settings = ({setIsLoading}) => {
 
     // API functionality to pull from localhost in production and heroku in development
     const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === 'localhost' 
-    ? 'http://localhost:5001' 
+    ? 'http://localhost:5002' 
     : 'https://btbapp.ca');
 
 

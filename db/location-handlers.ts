@@ -92,7 +92,7 @@ const requestPositionFromAddress = async (req: Request, res: Response): Promise<
     sendResponse(res, 200, result, 'Address converted');
   } catch (err) {
     console.error('Position request error:', err);
-    sendResponse(res, 500, err, 'This request resulted in an internal server error');
+    sendResponse(res, 500, null, err instanceof Error? err.message: 'Geocoding failed');
   }
 };
 
