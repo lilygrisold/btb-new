@@ -43,9 +43,14 @@ import {
 
 console.log('Handler modules imported successfully.');
 
+// Cover /index.ts vs /dist/index.js root diff between development and production
+const projectRoot = fs.existsSync(path.join(__dirname, 'client'))
+  ? __dirname           // if client folder exists in the directory, use it
+  : path.resolve(__dirname, '..'); // if not, try the directory above
+  
 // Verify React build exists
-const buildPath: string = path.join(__dirname, 'client', 'build');
-const clientPath: string = path.join(__dirname, 'client');
+const buildPath: string = path.join(projectRoot, 'client', 'build');
+const clientPath: string = path.join(projectRoot, 'client');
 
 console.log(`Checking for React build at: ${buildPath}`);
 console.log('Contents of /client:', fs.readdirSync(clientPath));
@@ -83,12 +88,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static files
-app.use(express.static(path.join(process.cwd(), 'client/build')));
+app.use(express.static(path.join(projectRoot, 'client/build')));
 console.log('CORS, body-parser, and static middleware configured.');
 
 // View engine (configured but unused)
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(projectRoot, 'views'));
 console.log('View engine configured with EJS.');
 
 ////////////////
@@ -97,7 +102,7 @@ console.log('View engine configured with EJS.');
 
 // Serve React app
 app.get('/', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(projectRoot, 'client/build', 'index.html'));
 });
 
 // API Endpoints
