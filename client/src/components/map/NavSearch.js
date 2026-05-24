@@ -10,6 +10,7 @@ import { BsSearch } from "react-icons/bs";
 import { FaMapMarkerAlt, FaDotCircle } from "react-icons/fa";
 import { UserContext } from "../UserContext";
 import Typeahead from "../map/typeahead/Typeahead";
+import DestinationTypeAhead from "../map/typeahead/DestinationTypeAhead";
 
 
 const NavSearch = ({ mapRef, mapboxgl,createOriginOrDestinationMarker, addTransitIcon, addRouteLayer, removeMarkers, centerMapOnOrigin}) => {
@@ -365,21 +366,17 @@ const NavSearch = ({ mapRef, mapboxgl,createOriginOrDestinationMarker, addTransi
               </FlexColLeft>
               <FlexCol>
                 <Typeahead
-                  type="text"
                   placeholder="Origin"
                   value={originInput}
                   onChange={(e) => handleOriginChange(e)}
                   suggestedOriginAddresses={suggestedOriginAddresses}
-                  onKeyDown={(e) => handleKeyDown(e, suggestedOriginAddresses, setOriginInput)}
-                  activeSuggestionIndex={activeSuggestionIndex}
+                  suggestedDestinationAddresses={[]}
                   autofocus
                 />
-                <Typeahead
-                  type="text"
-                  placeholder="Destination"
+                <DestinationTypeAhead
                   value={destinationInput}
                   onChange={(e) => handleDestinationChange(e)}
-                  suggestedDestinationAddresses={suggestedDestinationAddresses}
+                  suggestedAddresses={suggestedDestinationAddresses}
                 />
               </FlexCol>
           </InputWrapper>

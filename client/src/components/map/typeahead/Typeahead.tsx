@@ -6,6 +6,8 @@ interface TypeaheadProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement> | { target: { value: string } }) => void;
   suggestedOriginAddresses: string[];
   suggestedDestinationAddresses: string[];
+  placeholder?: string;
+  autofocus?: boolean;
 }
 
 const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestinationAddresses }: TypeaheadProps) => {
