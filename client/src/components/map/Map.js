@@ -55,7 +55,6 @@ const Map = () => {
         setStationStatus,
         bikeStations, 
         setBikeStations,
-        addStations
     } = useContext(UserContext);
 
     // *****************************************************
@@ -221,7 +220,7 @@ const Map = () => {
         }
     
         return () => clearTimeout(timeout); // 🔥 Always clear the timeout
-    }, [stationStatus, addStations]);
+    }, [bikeStations, mapInit]);
     
     
 

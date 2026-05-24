@@ -2,18 +2,22 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import { UserContext } from '../../UserContext';
 
-const DestinationTypeAhead = ({ value, onChange, suggestedAddresses }) => {
+interface DestinationTypeAheadProps {
+  value: string;
+  onChange: (e: { target: { value: string } }) => void;
+  suggestedAddresses: string[];
+}
+
+const DestinationTypeAhead = ({ value, onChange, suggestedAddresses }: DestinationTypeAheadProps) => {
   const { currentUser } = useContext(UserContext);
 
-  // Default to an empty array if previous_searches is undefined or null
-  const previousSearches = (currentUser?.previous_searches || []).filter(search =>
+  const previousSearches = (currentUser?.previous_searches || []).filter((search: any) =>
     search.destination.toLowerCase().includes(value.toLowerCase())
   );
 
-  // Default suggestedAddresses to an empty array if undefined or null
   const safeSuggestedAddresses = suggestedAddresses || [];
 
-  const handleSuggestionClick = (address) => {
+  const handleSuggestionClick = (address: string) => {
     onChange({ target: { value: address } });
   };
 
@@ -32,7 +36,7 @@ const DestinationTypeAhead = ({ value, onChange, suggestedAddresses }) => {
 
       {previousSearches.length > 0 && value.length > 0 && (
         <SearchList>
-          {previousSearches.map(search => {
+          {previousSearches.map((search: any) => {
             const indexOfMatch = search.destination.toLowerCase().indexOf(value.toLowerCase());
             const firstHalf = search.destination.slice(0, indexOfMatch + value.length);
             const secondHalf = search.destination.slice(indexOfMatch + value.length);
@@ -47,7 +51,7 @@ const DestinationTypeAhead = ({ value, onChange, suggestedAddresses }) => {
 
       {safeSuggestedAddresses.length > 0 && (
         <SuggestionsList>
-          {safeSuggestedAddresses.map(address => (
+          {safeSuggestedAddresses.map((address: string) => (
             <li key={address} onClick={() => handleSuggestionClick(address)}>
               {address}
             </li>

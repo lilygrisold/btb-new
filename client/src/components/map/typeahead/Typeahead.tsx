@@ -1,36 +1,40 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestinationAddresses}) => {
-  // State for suggestions from Google Maps Autocomplete API
+interface TypeaheadProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement> | { target: { value: string } }) => void;
+  suggestedOriginAddresses: string[];
+  suggestedDestinationAddresses: string[];
+}
+
+const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestinationAddresses }: TypeaheadProps) => {
   const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
-  // State to show or hide suggestions
   const [showSuggestions, setShowSuggestions] = useState(true);
 
-  const handleSuggestionClick = (address) => {
-    onChange({ target: { value: address } }); // Pull value from target
-    setShowSuggestions(false); // Stop showing suggestions
-    setSelectedSuggestion(-1); // Reset selection
+  const handleSuggestionClick = (address: string) => {
+    console.log("Suggestion clicked:", address);
+    onChange({ target: { value: address } });
+    setShowSuggestions(false);
+    setSelectedSuggestion(-1);
   };
 
-  // When input changes, show suggestions from google maps autocomplete
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e);
-    setShowSuggestions(true); // Show suggestions on input
-    setSelectedSuggestion(-1); // Reset selection on change
+    setShowSuggestions(true);
+    setSelectedSuggestion(-1);
   };
 
-  // Functionality for scrolling through the list of suggestions and selecting one
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const allSuggestions = [...suggestedOriginAddresses, ...suggestedDestinationAddresses];
     if (e.key === "ArrowDown") {
-      setSelectedSuggestion((prevIndex) => Math.min(prevIndex + 1, suggestedOriginAddresses.length - 1));
+      setSelectedSuggestion((prevIndex) => Math.min(prevIndex + 1, allSuggestions.length - 1));
     } else if (e.key === "ArrowUp") {
       setSelectedSuggestion((prevIndex) => Math.max(prevIndex - 1, 0));
     } else if (e.key === "Enter" && selectedSuggestion >= 0) {
-      handleSuggestionClick(suggestedOriginAddresses[selectedSuggestion]);
+      handleSuggestionClick(allSuggestions[selectedSuggestion]);
     }
   };
-
 
   return (
     <FlexCol>
@@ -38,9 +42,9 @@ const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestina
         <SearchBar
           type="text"
           value={value}
-          onChange={handleChange} // When input changes, run function to show list of suggestinos
+          onChange={handleChange}
           placeholder={""}
-          onKeyDown={handleKeyDown} // When arrow keys are pressed, run function to allow selection
+          onKeyDown={handleKeyDown}
         />
         <ClearBtn type="button" onClick={() => onChange({ target: { value: "" } })}>
           Clear
@@ -107,15 +111,12 @@ const SearchList = styled.ul`
   padding: 10px;
   width: 100%;
   background-color: white;
-  padding: 10px;
-  width: 100%;
   font-size: 14px;
 `;
 
 const SearchListItem = styled.li`
   padding: 5px;
   font-size: 14px;
-  border: 5px red;
   &:hover {
     background-color: whitesmoke;
   }

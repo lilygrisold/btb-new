@@ -65,6 +65,7 @@
     "@babel/core": "^7.0.0-0",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
+    "@types/styled-components": "^5.1.36",
     "ts-loader": "^9.5.7",
     "typescript": "^6.0.2"
   }
