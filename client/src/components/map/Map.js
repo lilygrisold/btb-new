@@ -584,8 +584,8 @@ const Map = () => {
                     createOriginOrDestinationMarker={createOriginOrDestinationMarker}
                 />
                 <MapContainer ref={mapContainer} className="map-container" />
-                <TripDetails />
             </Wrapper>
+                <TripDetails />
         </>
     );
 };

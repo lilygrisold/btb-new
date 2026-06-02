@@ -31,3 +31,5 @@ Thumbs.db
 .env.development
 backup-pre-integration.sh
 btb-backups/
+.env
+.env.*

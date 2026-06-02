@@ -10,7 +10,7 @@ interface TypeaheadProps {
   autofocus?: boolean;
 }
 
-const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestinationAddresses }: TypeaheadProps) => {
+const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestinationAddresses, placeholder, autofocus}: TypeaheadProps) => {
   const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
   const [showSuggestions, setShowSuggestions] = useState(true);
 
@@ -45,8 +45,9 @@ const Typeahead = ({ value, onChange, suggestedOriginAddresses, suggestedDestina
           type="text"
           value={value}
           onChange={handleChange}
-          placeholder={""}
+          placeholder={placeholder || ""}
           onKeyDown={handleKeyDown}
+          autoFocus={autofocus || false}
         />
         <ClearBtn type="button" onClick={() => onChange({ target: { value: "" } })}>
           Clear

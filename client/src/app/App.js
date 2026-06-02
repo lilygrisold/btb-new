@@ -3,7 +3,7 @@
 //**************************************************************** */
 
 // React routing dependencies
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
 import styled from 'styled-components';
 
 // Local components
@@ -15,18 +15,23 @@ import Header from '../components/Header';
 import Profile from "../components/authentication/Profile/Profile";
 import Error from "../components/Error";
 import ScrollToTop from "./ScrollToTop";
+import ScrollManager from "./ScrollManager";
 
 // required by mabox
 import mapboxgl from 'mapbox-gl';
+import { useEffect } from "react";
 // import mapboxgl from 'mapbox-gl/dist/mapbox-gl.css';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 const App = () => {
+  
+
   return (
 <>
-
+    
   <Wrapper>
     <GlobalStyles />
     <BrowserRouter>
+    <ScrollManager />
       <ScrollToTop />
       <Header/>
       <Routes>
