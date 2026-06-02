@@ -16,7 +16,7 @@ const ScrollManager = () =>{
           document.body.style.height = 'auto';
         }
       },[location.pathname]);
-
+      return null;
 }
 
 export default ScrollManager

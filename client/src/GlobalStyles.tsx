@@ -1,9 +1,5 @@
-// Import our favorite create Global Style, thaqt
-// will allow us to pass all of the following CSS
-// as one element that can be accessed in App
 import { createGlobalStyle } from "styled-components";
 
-// It's a constant!
 const GlobalStyles = createGlobalStyle`
 
     // Color scheme and fonts defined as variables 
@@ -31,20 +27,15 @@ const GlobalStyles = createGlobalStyle`
     // DESKTOP
     @media (min-width: 750px) {
 
-
     }
 
     // TABLET
     @media (max-width: 750px) {
 
-
-
     }
 
     // PHONE
     @media (max-width: 550px) {
-
-
 
     }
 
@@ -112,6 +103,4 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
     }`;
 
-    // Export that baby for use in App!
-    // Bellissimo!
     export default GlobalStyles;

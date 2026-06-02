@@ -1,0 +1,9 @@
+declare module '*.css';
+declare module '*.scss';
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.svg';
+declare module 'styled-components';
+declare module 'react-icons/*';
+declare module 'mapbox-gl';

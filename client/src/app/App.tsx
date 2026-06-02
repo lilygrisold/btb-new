@@ -7,7 +7,7 @@ import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
 import styled from 'styled-components';
 
 // Local components
-import GlobalStyles from "../../src/GlobalStyles";
+import GlobalStyles from "../GlobalStyles";
 import Homepage from "../components/Homepage";
 import Login from "../components/authentication/Login";
 import Signup from "../components/authentication/Signup";
@@ -21,7 +21,7 @@ import ScrollManager from "./ScrollManager";
 import mapboxgl from 'mapbox-gl';
 import { useEffect } from "react";
 // import mapboxgl from 'mapbox-gl/dist/mapbox-gl.css';
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN as string;
 const App = () => {
   
 
@@ -35,7 +35,7 @@ const App = () => {
       <ScrollToTop />
       <Header/>
       <Routes>
-        <Route exact path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
