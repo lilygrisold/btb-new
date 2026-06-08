@@ -18,6 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
@@ -30,11 +35,5 @@ module.exports = {
     ],
   },
   externals: [nodeExternals()],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    hot: true,
-  },
 
 };
