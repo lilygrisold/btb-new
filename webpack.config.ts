@@ -7,7 +7,10 @@ const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 module.exports = {
   mode: 'production',
   target: 'node',
-  entry: './index.js',
+  entry: './index.ts',
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
