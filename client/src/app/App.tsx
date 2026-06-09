@@ -3,7 +3,7 @@
 //**************************************************************** */
 
 // React routing dependencies
-import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import styled from 'styled-components';
 
 // Local components
@@ -17,33 +17,35 @@ import Error from "../components/Error";
 import ScrollToTop from "./ScrollToTop";
 import ScrollManager from "./ScrollManager";
 
-// required by mabox
+// Mapbox dependencies
 import mapboxgl from 'mapbox-gl';
-import { useEffect } from "react";
-// import mapboxgl from 'mapbox-gl/dist/mapbox-gl.css';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN as string;
+
 const App = () => {
   
-
   return (
-<>
-    
-  <Wrapper>
-    <GlobalStyles />
-    <BrowserRouter>
-    <ScrollManager />
-      <ScrollToTop />
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </BrowserRouter>
-  </Wrapper>
-  </>
+          <>
+            <Wrapper>
+
+              <GlobalStyles />
+
+              <BrowserRouter>
+                <ScrollManager />
+                <ScrollToTop />
+                <Header/>
+
+                <Routes>
+                  <Route path="/" element={<Homepage />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="*" element={<Error />} />
+                </Routes>
+                
+              </BrowserRouter>
+
+            </Wrapper>
+          </>
   );
 }
 

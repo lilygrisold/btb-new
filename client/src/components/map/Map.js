@@ -125,8 +125,8 @@ const Map = () => {
         // Check that /stations and /station-status have been fetched and stored locally in state
         if (bikeDataRetrieved && bikeLocations.length > 0 && stationStatus !== null){
             let stations = []; // Empty array to rearrange data for our use
-            bikeLocations.map((station) => { // For every station
-                stationStatus.map((data) => { // Map through additional data
+            bikeLocations.forEach((station) => { // For every station
+                stationStatus.forEach((data) => { // Map through additional data
                     if(station.station_id === data.station_id){ // If it's the same station via id match
                         const stationResponse = { // Set an object for that station with our selected data
                             station_id: station.station_id,
